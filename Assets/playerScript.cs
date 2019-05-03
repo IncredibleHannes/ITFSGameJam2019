@@ -8,6 +8,9 @@ public class playerScript : MonoBehaviour
     public float xSpeed = 1.0f;
 
     private HFTInput m_hftInput;
+    private int jumps;
+
+    private int MAX_JUMPS = 2;
 
     // Use this for initialization
     void Start()
@@ -28,9 +31,16 @@ public class playerScript : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         }
 
-        if (m_hftInput.GetButtonDown("fire1") || Input.GetKeyDown("space"))
+        if ((m_hftInput.GetButtonDown("fire1") || Input.GetKeyDown("space")) && jumps > 0)
         {
-            GetComponent<Rigidbody2D>().AddForce((new Vector2(0, 200)));
+            GetComponent<Rigidbody2D>().AddForce((new Vector2(0, 250)));
+            jumps--;
         }
+
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        jumps = MAX_JUMPS;
     }
 }
