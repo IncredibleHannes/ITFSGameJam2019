@@ -10,7 +10,8 @@ public class playerScript : MonoBehaviour
     private HFTInput m_hftInput;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         m_hftInput = GetComponent<HFTInput>();
     }
 
@@ -20,5 +21,16 @@ public class playerScript : MonoBehaviour
         float dy = ySpeed * (m_hftInput.GetAxis("Horizontal") /* + Input.GetAxis("Vertical")*/) * Time.deltaTime;
         float dx = xSpeed * Time.deltaTime;
         transform.position = transform.position + new Vector3(dx, dy, 0.0f);
+
+        if (transform.position.y < -6)
+        {
+            transform.position = new Vector3(transform.position.x, 6, 0);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+        }
+
+        if (m_hftInput.GetButtonDown("fire1") || Input.GetKeyDown("space"))
+        {
+            GetComponent<Rigidbody2D>().AddForce((new Vector2(0, 200)));
+        }
     }
 }
