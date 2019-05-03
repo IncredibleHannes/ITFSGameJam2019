@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class ScrollingBG : MonoBehaviour
 {
-    void Start ()
+    private float xSpeed = 5.0f;
+    private Transform cam;
+    void Start()
     {
+        cam = Camera.main.transform;
 
     }
 
-    void Update ()
+    void Update()
     {
+        float dx = xSpeed * Time.deltaTime;
+        transform.position = transform.position + new Vector3(dx, 0.0f, 0.0f);
+
 
     }
 }

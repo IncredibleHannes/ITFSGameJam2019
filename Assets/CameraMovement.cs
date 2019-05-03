@@ -6,12 +6,12 @@ public class CameraMovement : MonoBehaviour
 {
     public Vector3 startPosition;
 
-    public float xSpeed = 1.0f;
+    private float xSpeed = 5.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame

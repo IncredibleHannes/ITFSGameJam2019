@@ -5,7 +5,7 @@ using UnityEngine;
 public class playerScript : MonoBehaviour
 {
     public float ySpeed = 4.0f;
-    public float xSpeed = 1.0f;
+    private float xSpeed = 10.0f;
 
     private HFTInput m_hftInput;
 
@@ -15,11 +15,13 @@ public class playerScript : MonoBehaviour
 
     private HFTGamepad m_gamepad;
     private TrailRenderer tr;
+    private Transform cam;
 
 
     // Use this for initialization
     void Start()
     {
+        cam = Camera.main.transform;
         m_hftInput = GetComponent<HFTInput>();
         m_gamepad = GetComponent<HFTGamepad>();
 
@@ -42,9 +44,7 @@ public class playerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float dy = ySpeed * (m_hftInput.GetAxis("Horizontal") /* + Input.GetAxis("Vertical")*/) * Time.deltaTime;
-        float dx = xSpeed * Time.deltaTime;
-        transform.position = transform.position + new Vector3(dx, dy, 0.0f);
+        transform.position = new Vector3(cam.transform.position.x, transform.position.y, transform.position.z);
 
         if (transform.position.y < -6)
         {
@@ -62,6 +62,16 @@ public class playerScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        jumps = MAX_JUMPS;
+        var normal = col.contacts[0].normal;
+        if (normal.y > 0)
+        { //if the bottom side hit something 
+            Debug.Log("You Hit the floor");
+            jumps = MAX_JUMPS;
+        }
+        if (normal.y < 0)
+        { //if the top side hit something
+            Debug.Log("You Hit the roof");
+        }
+
     }
 }
