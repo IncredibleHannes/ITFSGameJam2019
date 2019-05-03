@@ -16,11 +16,15 @@ public class MidiNoteSpawner : MonoBehaviour
     private SevenBitNumber minPitch = SevenBitNumber.MaxValue;
     private SevenBitNumber maxPitch = SevenBitNumber.MinValue;
 
+    public float lengthScaler = 2;
+    public float xOffset = 1;
+    public float yOffset = 1;
     void Start()
     {
         this.noteParent = new GameObject("Notes").transform;
 
-        if (this.midiFile == null) {
+        if (this.midiFile == null)
+        {
             Debug.Log("No Midi file specified");
             return;
         }
@@ -31,7 +35,7 @@ public class MidiNoteSpawner : MonoBehaviour
         {
             foreach (var note in channel)
             {
-                CreateNote(note.Time, note.NoteNumber, note.Length);
+                CreateNote(note.Time * lengthScaler, note.NoteNumber, note.Length * lengthScaler);
             }
         }
 
@@ -49,7 +53,8 @@ public class MidiNoteSpawner : MonoBehaviour
         // Instantiate(prefab, new Vector3(9.3f, 1.8f, -1), Quaternion.identity);
     }
 
-    IEnumerable<NotesCollection> LoadMidi(byte[] bytes) {
+    IEnumerable<NotesCollection> LoadMidi(byte[] bytes)
+    {
         Stream stream = new MemoryStream(bytes);
         MidiFile file = MidiFile.Read(stream);
         var midi = file.GetTrackChunks().Select(track => track.ManageNotes().Notes);
@@ -68,15 +73,18 @@ public class MidiNoteSpawner : MonoBehaviour
         return midi;
     }
 
-    void CreateNote(long time, int pitch, long length) {
+    void CreateNote(float time, int pitch, float length)
+    {
+        float noteLength = length / 350f;
         GameObject note = Instantiate(prefab, noteParent);
+        var midiNote = note.GetComponent<MidiNote>();
+        midiNote.length = noteLength;
         note.transform.position = new Vector3(
-            time / 2000f,
-            (pitch - minPitch) / (float)(maxPitch - minPitch) * 4 - 2,
+            (time / 2000f) + xOffset,
+            (((pitch - minPitch) / (float)(maxPitch - minPitch) * 4 - 2) * 1.3f) + yOffset,
             1
         );
-        var midiNote = note.GetComponent<MidiNote>();
-        midiNote.length = length / 300f;
+
     }
 
     // Update is called once per frame
