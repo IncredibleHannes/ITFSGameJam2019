@@ -5,6 +5,7 @@ using UnityEngine;
 public class playerScript : MonoBehaviour
 {
     public float ySpeed = 4.0f;
+    public float xSpeed = 1.0f;
 
     private HFTInput m_hftInput;
 
@@ -17,6 +18,7 @@ public class playerScript : MonoBehaviour
     void Update()
     {
         float dy = ySpeed * (m_hftInput.GetAxis("Horizontal") /* + Input.GetAxis("Vertical")*/) * Time.deltaTime;
-        transform.position = transform.position + new Vector3(0.0f, dy, 0.0f);
+        float dx = xSpeed * Time.deltaTime;
+        transform.position = transform.position + new Vector3(dx, dy, 0.0f);
     }
 }

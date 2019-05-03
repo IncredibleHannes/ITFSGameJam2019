@@ -17,7 +17,6 @@ public class MidiNote : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float newPosition = Time.time * scrollSpeed;
-        transform.position = startPosition + Vector3.left * newPosition;
+        
     }
 }
