@@ -7,6 +7,9 @@ public class playerScript : MonoBehaviour
     public float ySpeed = 4.0f;
     private float xSpeed = 10.0f;
 
+    public float jumpSpeed = 10;
+    public float glideForce = 7;
+
     private HFTInput m_hftInput;
 
     private int jumps;
@@ -24,11 +27,11 @@ public class playerScript : MonoBehaviour
     {
         cam = Camera.main.transform;
         m_hftInput = GetComponent<HFTInput>();
-        m_gamepad = GetComponent<HFTGamepad>(); 
+        m_gamepad = GetComponent<HFTGamepad>();
 
         // set player colors
         // Debug.Log("setting color for player %i", playerNo);
-        Color[] colors = {Color.red, Color.green, Color.blue};
+        Color[] colors = { Color.red, Color.green, Color.blue };
         Color thisColor = colors[playerNo % 3];
         playerNo++;
 
@@ -63,13 +66,14 @@ public class playerScript : MonoBehaviour
 
         if ((m_hftInput.GetButtonDown("fire1") || Input.GetKeyDown("space")) && jumps > 0)
         {
-            GetComponent<Rigidbody2D>().AddForce((new Vector2(0, 250)));
+            var body = GetComponent<Rigidbody2D>();
+            body.velocity = new Vector2(body.velocity.x, jumpSpeed);
             jumps--;
         }
 
         if ((m_hftInput.GetButton("fire2") || Input.GetKey("b")))
         {
-            GetComponent<Rigidbody2D>().AddForce((new Vector2(0, 7)));
+            GetComponent<Rigidbody2D>().AddForce((new Vector2(0, glideForce)));
             jumps--;
         }
 
