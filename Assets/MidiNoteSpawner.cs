@@ -36,7 +36,7 @@ public class MidiNoteSpawner : MonoBehaviour
         {
             foreach (var note in channel)
             {
-                CreateNote(note.Time * lengthScaler, note.NoteNumber, note.Length * lengthScaler);
+                CreateNote(note.Time, note.NoteNumber, note.Length);
             }
         }
     }
@@ -63,12 +63,12 @@ public class MidiNoteSpawner : MonoBehaviour
 
     void CreateNote(float time, int pitch, float length)
     {
-        float noteLength = length / 350f;
+        float noteLength = (length / 350f) * lengthScaler;
         GameObject note = Instantiate(prefab, noteParent);
         var midiNote = note.GetComponent<MidiNote>();
         midiNote.length = noteLength;
         note.transform.position = new Vector3(
-            (float)((time / 2000d) + xOffset),
+            (float)((time / 2000d) + xOffset) * lengthScaler,
             (((pitch - minPitch) / (float)(maxPitch - minPitch) * 4 - 2) * 1.2f) + yOffset,
             1
         );
