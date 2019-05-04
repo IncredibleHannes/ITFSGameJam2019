@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: 
-  autoChooseColor: 1
+  autoChooseColor: 0
   color: {r: 0, g: 1, b: 0, a: 1}
   controllerOptions:
     controllerType: 7
@@ -399,6 +399,6 @@ TrailRenderer:
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
-  m_MinVertexDistance: 0.1
+  m_MinVertexDistance: 0.01
   m_Autodestruct: 0
   m_Emitting: 1
