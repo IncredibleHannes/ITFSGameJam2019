@@ -20,6 +20,8 @@ public class playerScript : MonoBehaviour
     private TrailRenderer tr;
     private Transform cam;
 
+    private ScoreScript scoreScript;
+
     private static int playerNo = 0;
 
     public ParticleSystem[] noteParticles = new ParticleSystem[] { };
@@ -59,6 +61,9 @@ public class playerScript : MonoBehaviour
             new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) }
         );
         tr.colorGradient = gradient;
+
+        GameObject playerManager = GameObject.FindGameObjectWithTag("Player");
+        scoreScript = playerManager.GetComponent<ScoreScript>();
     }
 
     // Update is called once per frame
@@ -70,6 +75,8 @@ public class playerScript : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, 6, 0);
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+
+            scoreScript.Miss();
         }
 
         if ((m_hftInput.GetButtonDown("fire1") || Input.GetKeyDown("space")) && jumps > 0)
@@ -93,11 +100,12 @@ public class playerScript : MonoBehaviour
         { //if the bottom side hit something 
             Debug.Log("You Hit the floor");
             jumps = MAX_JUMPS;
+
+            scoreScript.Hit();
         }
         if (normal.y < 0)
         { //if the top side hit something
             Debug.Log("You Hit the roof");
         }
-
     }
 }
