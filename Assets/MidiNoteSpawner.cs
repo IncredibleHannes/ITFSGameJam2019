@@ -16,7 +16,7 @@ public class MidiNoteSpawner : MonoBehaviour
     private SevenBitNumber minPitch = SevenBitNumber.MaxValue;
     private SevenBitNumber maxPitch = SevenBitNumber.MinValue;
 
-    public float lengthScaler = 2;
+    public float lengthScaler = 1.8f;
     public float xOffset = 1;
     public float yOffset = 1;
     void Start()
@@ -69,7 +69,7 @@ public class MidiNoteSpawner : MonoBehaviour
         midiNote.length = noteLength;
         note.transform.position = new Vector3(
             (time / 2000f) + xOffset,
-            (((pitch - minPitch) / (float)(maxPitch - minPitch) * 4 - 2) * 1.3f) + yOffset,
+            (((pitch - minPitch) / (float)(maxPitch - minPitch) * 4 - 2) * 1.2f) + yOffset,
             1
         );
 

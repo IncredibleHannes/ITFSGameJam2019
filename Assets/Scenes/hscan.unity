@@ -277,7 +277,7 @@ Transform:
   m_GameObject: {fileID: 468783242}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 100}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -458,7 +458,7 @@ MonoBehaviour:
   midiFile: {fileID: 4900000, guid: d07bdff9f6188d64da3daec7e2d383ff, type: 3}
   prefab: {fileID: 4043231216360627772, guid: 20375cfede5761c46ab256ec57d24b65, type: 3}
   lengthScaler: 8
-  xOffset: 0
+  xOffset: 1
   yOffset: 1
 --- !u!4 &650092502
 Transform:
@@ -489,8 +489,8 @@ MonoBehaviour:
   midiFile: {fileID: 4900000, guid: 79890b73c999780428d93d09a8bde087, type: 3}
   prefab: {fileID: 4043231216360627772, guid: 48c4a994c040c7c459ecb1aaaad9122e, type: 3}
   lengthScaler: 8
-  xOffset: 0
-  yOffset: -3
+  xOffset: 1
+  yOffset: -2
 --- !u!1 &811364817
 GameObject:
   m_ObjectHideFlags: 0
