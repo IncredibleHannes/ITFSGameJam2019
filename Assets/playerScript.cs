@@ -58,6 +58,12 @@ public class playerScript : MonoBehaviour
             jumps--;
         }
 
+        if ((m_hftInput.GetButton("fire2") || Input.GetKey("b")))
+        {
+            GetComponent<Rigidbody2D>().AddForce((new Vector2(0, 7)));
+            jumps--;
+        }
+
     }
 
     void OnCollisionEnter2D(Collision2D col)
