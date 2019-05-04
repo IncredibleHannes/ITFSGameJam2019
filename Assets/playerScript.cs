@@ -74,7 +74,6 @@ public class playerScript : MonoBehaviour
         if ((m_hftInput.GetButton("fire2") || Input.GetKey("b")))
         {
             GetComponent<Rigidbody2D>().AddForce((new Vector2(0, glideForce)));
-            jumps--;
         }
 
     }
