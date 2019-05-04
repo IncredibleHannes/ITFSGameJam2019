@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScrollingBG : MonoBehaviour
 {
-    private float xSpeed = 5.0f;
+    public float xSpeed = 5.0f;
     private Transform cam;
     void Start()
     {

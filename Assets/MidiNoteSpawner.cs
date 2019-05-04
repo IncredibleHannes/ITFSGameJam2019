@@ -31,6 +31,7 @@ public class MidiNoteSpawner : MonoBehaviour
 
         var midi = LoadMidi(this.midiFile.bytes);
 
+
         foreach (var channel in midi)
         {
             foreach (var note in channel)

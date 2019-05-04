@@ -5,7 +5,6 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class MidiNote : MonoBehaviour
 {
-    public float scrollSpeed = 2.0f;
     public float length = 1;
 
     private Vector3 startPosition;
