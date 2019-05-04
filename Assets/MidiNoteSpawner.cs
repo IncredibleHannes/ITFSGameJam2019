@@ -63,7 +63,7 @@ public class MidiNoteSpawner : MonoBehaviour
 
     void CreateNote(float time, int pitch, float length)
     {
-        float noteLength = (length / 350f) * lengthScaler;
+        float noteLength = (length / 360f) * lengthScaler;
         GameObject note = Instantiate(prefab, noteParent);
         var midiNote = note.GetComponent<MidiNote>();
         midiNote.length = noteLength;
