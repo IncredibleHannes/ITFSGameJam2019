@@ -25,8 +25,8 @@ public class playerScript : MonoBehaviour
         m_hftInput = GetComponent<HFTInput>();
         m_gamepad = GetComponent<HFTGamepad>();
 
-        Renderer renderer = GetComponent<Renderer>();
-        renderer.material.color = m_gamepad.color;
+        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+        renderer.color = m_gamepad.color;
 
         tr = GetComponent<TrailRenderer>();
         tr.material = new Material(Shader.Find("Sprites/Default"));
