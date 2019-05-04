@@ -68,7 +68,7 @@ public class MidiNoteSpawner : MonoBehaviour
         var midiNote = note.GetComponent<MidiNote>();
         midiNote.length = noteLength;
         note.transform.position = new Vector3(
-            (time / 2000f) + xOffset,
+            (float)((time / 2000d) + xOffset),
             (((pitch - minPitch) / (float)(maxPitch - minPitch) * 4 - 2) * 1.2f) + yOffset,
             1
         );
