@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: 
-  autoChooseColor: 1
+  autoChooseColor: 0
   color: {r: 0, g: 1, b: 0, a: 1}
   controllerOptions:
     controllerType: 7

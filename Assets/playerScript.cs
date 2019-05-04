@@ -17,16 +17,25 @@ public class playerScript : MonoBehaviour
     private TrailRenderer tr;
     private Transform cam;
 
+    private static int playerNo = 0;
 
     // Use this for initialization
     void Start()
     {
         cam = Camera.main.transform;
         m_hftInput = GetComponent<HFTInput>();
-        m_gamepad = GetComponent<HFTGamepad>();
+        m_gamepad = GetComponent<HFTGamepad>(); 
+
+        // set player colors
+        // Debug.Log("setting color for player %i", playerNo);
+        Color[] colors = {Color.red, Color.green, Color.blue};
+        Color thisColor = colors[playerNo % 3];
+        playerNo++;
+
+        m_gamepad.Color = thisColor;
 
         SpriteRenderer renderer = GetComponent<SpriteRenderer>();
-        renderer.color = m_gamepad.color;
+        renderer.color = thisColor;
 
         tr = GetComponent<TrailRenderer>();
         tr.material = new Material(Shader.Find("Sprites/Default"));
@@ -35,7 +44,7 @@ public class playerScript : MonoBehaviour
         float alpha = 1.0f;
         Gradient gradient = new Gradient();
         gradient.SetKeys(
-            new GradientColorKey[] { new GradientColorKey(m_gamepad.color, 0.0f), new GradientColorKey(m_gamepad.color, 1.0f) },
+            new GradientColorKey[] { new GradientColorKey(thisColor, 0.0f), new GradientColorKey(thisColor, 1.0f) },
             new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) }
         );
         tr.colorGradient = gradient;
