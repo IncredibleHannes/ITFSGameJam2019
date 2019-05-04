@@ -357,7 +357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   midiFile: {fileID: 4900000, guid: c4e703f9742b95d469d524db4dac5b0e, type: 3}
   prefab: {fileID: 4043231216360627772, guid: 20375cfede5761c46ab256ec57d24b65, type: 3}
-  lengthScaler: 7.5
+  lengthScaler: 7.8
   xOffset: 6.5
   yOffset: -2.5
 --- !u!4 &650092502
@@ -504,7 +504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabToSpawnForPlayer: {fileID: 8755490486738445764, guid: 2ed7d737e890958428995e73fbe58a83,
     type: 3}
-  maxPlayers: 0
+  maxPlayers: 6
   happyfuntimesOptions:
     controllerFilename: controllers/gamepad/controller.html
     name: 
@@ -629,7 +629,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPosition: {x: 0, y: 0, z: 0}
-  xSpeed: 1
 --- !u!1 &1961694252
 GameObject:
   m_ObjectHideFlags: 0
