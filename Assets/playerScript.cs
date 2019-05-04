@@ -22,6 +22,8 @@ public class playerScript : MonoBehaviour
 
     private static int playerNo = 0;
 
+    public ParticleSystem[] noteParticles = new ParticleSystem[] { };
+
     // Use this for initialization
     void Start()
     {
@@ -36,6 +38,12 @@ public class playerScript : MonoBehaviour
         playerNo++;
 
         m_gamepad.Color = thisColor;
+
+        foreach (var particle in noteParticles)
+        {
+            ParticleSystem.MainModule main = particle.main;
+            main.startColor = thisColor;
+        }
 
         SpriteRenderer renderer = GetComponent<SpriteRenderer>();
         renderer.color = thisColor;
