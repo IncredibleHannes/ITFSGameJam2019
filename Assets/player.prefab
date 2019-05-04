@@ -14379,6 +14379,8 @@ MonoBehaviour:
   - {fileID: 2411118718281103590}
   - {fileID: 8543317166163762378}
   - {fileID: 2310598956419211874}
+  rigidbody2d: {fileID: -1636996637875440567}
+  animator: {fileID: 9146174886715856422}
 --- !u!114 &-4422802004744015559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14487,7 +14489,7 @@ TrailRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1559377549
-  m_SortingLayer: 0
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Time: 10
   m_Parameters:

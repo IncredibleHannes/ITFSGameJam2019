@@ -26,6 +26,9 @@ public class playerScript : MonoBehaviour
 
     public ParticleSystem[] noteParticles = new ParticleSystem[] { };
 
+    public Rigidbody2D rigidbody2d;
+    public Animator animator;
+
     // Use this for initialization
     void Start()
     {
@@ -74,21 +77,29 @@ public class playerScript : MonoBehaviour
         if (transform.position.y < -6)
         {
             transform.position = new Vector3(transform.position.x, 6, 0);
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+            rigidbody2d.velocity = new Vector2(0, 0);
 
             scoreScript.Miss();
         }
 
         if ((m_hftInput.GetButtonDown("fire1") || Input.GetKeyDown("space")) && jumps > 0)
         {
-            var body = GetComponent<Rigidbody2D>();
-            body.velocity = new Vector2(body.velocity.x, jumpSpeed);
+            rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, jumpSpeed);
             jumps--;
         }
 
-        if ((m_hftInput.GetButton("fire2") || Input.GetKey("b")))
+        if (rigidbody2d.velocity.y != 0 && (m_hftInput.GetButton("fire2") || Input.GetKey("b")))
         {
-            GetComponent<Rigidbody2D>().AddForce((new Vector2(0, glideForce)));
+            rigidbody2d.AddForce((new Vector2(0, glideForce)));
+        }
+
+        if (rigidbody2d.velocity.y == 0)
+        {
+            animator.Play("Walking");
+        }
+        else
+        {
+            animator.Play("Jumping");
         }
 
     }
